@@ -48,7 +48,6 @@ export default {
 	  let targetUrl = 'https://random.ouonet.org';
 
 	  // 构造新的请求，保留原始请求的 URL 路径和查询参数
-	  let url = new URL(request.url);
 	  let newUrl = targetUrl + url.pathname + url.search;
 
     // 传递请求方法、头部等
