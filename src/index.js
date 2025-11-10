@@ -41,7 +41,7 @@ export default {
     const obj = env.MY_DO_NAMESPACE.get(id);
 
     // 向 Durable Object 发起fetch，实现请求下发
-    const doResponse = await obj.fetch(request);
+    const doResponse = await obj.fetch();
 
     return doResponse;
   }
