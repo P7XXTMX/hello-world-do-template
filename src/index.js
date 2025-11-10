@@ -37,8 +37,8 @@ export class MyDurableObject {
 export default {
   async fetch(request, env) {
     // 获取或创建 Durable Object 实例
-    const id = env.MY_DO_NAMESPACE.idFromName("singleton");
-    const obj = env.MY_DO_NAMESPACE.get(id);
+    const id = env.MY_DURABLE_OBJECT.idFromName("singleton");
+    const obj = env.MY_DURABLE_OBJECT.get(id);
 
     // 向 Durable Object 发起fetch，实现请求下发
     const doResponse = await obj.fetch();
