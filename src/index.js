@@ -40,8 +40,27 @@ export default {
     const id = env.MY_DURABLE_OBJECT.idFromName("singleton");
     const obj = env.MY_DURABLE_OBJECT.get(id);
 
+    // 解析请求内容或参数
+    const url = new URL(request.url);
+
+  
+     // 目标 Emby 服务器的 URL
+	  const targetUrl = 'https://random.ouonet.org';
+
+	  // 构造新的请求，保留原始请求的 URL 路径和查询参数
+	  const url = new URL(request.url);
+	  const newUrl = targetUrl + url.pathname + url.search;
+
+    // 传递请求方法、头部等
+  const newRequest = new Request(newUrl, {
+      method: request.method,
+      headers: request.headers,
+      body: request.body,
+      redirect: 'follow'
+  });
+
     // 向 Durable Object 发起fetch，实现请求下发
-    const doResponse = await obj.fetch();
+    const doResponse = await obj.fetch(newRequest);
 
     return doResponse;
   }
