@@ -7,18 +7,18 @@ export class MyDurableObject {
 
   async fetch(request) {
     // 解析请求内容或参数
-    const url = new URL(request.url);
+    let url = new URL(request.url);
 
   
      // 目标 Emby 服务器的 URL
-	  const targetUrl = 'https://random.ouonet.org';
+	  let targetUrl = 'https://random.ouonet.org';
 
 	  // 构造新的请求，保留原始请求的 URL 路径和查询参数
 	 
-	  const newUrl = targetUrl + url.pathname + url.search;
+	  let newUrl = targetUrl + url.pathname + url.search;
 
     // 传递请求方法、头部等
-  const newRequest = new Request(newUrl, {
+  let newRequest = new Request(newUrl, {
       method: request.method,
       headers: request.headers,
       body: request.body,
@@ -26,7 +26,7 @@ export class MyDurableObject {
   });
 
   // 发出请求到目标 Emby 服务器
-  const response = await fetch(newRequest);
+  let response = await fetch(newRequest);
  
 
     // 返回响应
@@ -41,18 +41,18 @@ export default {
     const obj = env.MY_DURABLE_OBJECT.get(id);
 
     // 解析请求内容或参数
-    const url = new URL(request.url);
+    let url = new URL(request.url);
 
   
      // 目标 Emby 服务器的 URL
-	  const targetUrl = 'https://random.ouonet.org';
+	  let targetUrl = 'https://random.ouonet.org';
 
 	  // 构造新的请求，保留原始请求的 URL 路径和查询参数
-	  const url = new URL(request.url);
-	  const newUrl = targetUrl + url.pathname + url.search;
+	  let url = new URL(request.url);
+	  let newUrl = targetUrl + url.pathname + url.search;
 
     // 传递请求方法、头部等
-  const newRequest = new Request(newUrl, {
+  let newRequest = new Request(newUrl, {
       method: request.method,
       headers: request.headers,
       body: request.body,
@@ -60,7 +60,7 @@ export default {
   });
 
     // 向 Durable Object 发起fetch，实现请求下发
-    const doResponse = await obj.fetch(newRequest);
+    let doResponse = await obj.fetch(newRequest);
 
     return doResponse;
   }
