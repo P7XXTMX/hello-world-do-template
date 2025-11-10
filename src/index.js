@@ -37,9 +37,9 @@ export class MyDurableObject {
 export default {
   async fetch(request, env) {
     // 获取或创建 Durable Object 实例
-    const id = env.MY_DURABLE_OBJECT.idFromName("singleton");
-    const obj = env.MY_DURABLE_OBJECT.get(id);
-
+    //const id = env.MY_DURABLE_OBJECT.idFromName("singleton");
+    //const obj = env.MY_DURABLE_OBJECT.get(id);
+    const obj = env.MY_DURABLE_OBJECT.getByName("foo-apac", { locationHint: "apac" });
     // 解析请求内容或参数
     let url = new URL(request.url);
 
